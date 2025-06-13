@@ -1,18 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\MemberController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('members.index');
 });
+
+Route::get('/members/report', [MemberController::class, 'report'])->name('members.report');
+
+Route::resource('members', MemberController::class);
+
+
+

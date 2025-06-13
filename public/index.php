@@ -33,18 +33,19 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 
 require __DIR__.'/../vendor/autoload.php';
 
-/*
-|--------------------------------------------------------------------------
-| Run The Application
-|--------------------------------------------------------------------------
-|
-| Once we have the application, we can handle the incoming request using
-| the application's HTTP kernel. Then, we will send the response back
-| to this client's browser, allowing them to enjoy our application.
-|
-*/
+if (!file_exists(__DIR__.'/../vendor/autoload.php')) {
+    die('Error: vendor/autoload.php not found. Run composer install.');
+}
+
+if (!file_exists(__DIR__.'/../bootstrap/app.php')) {
+    die('Error: bootstrap/app.php not found.');
+}
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
+
+if (!$app instanceof Illuminate\Foundation\Application) {
+    die('Error: Failed to load application.');
+}
 
 $kernel = $app->make(Kernel::class);
 
