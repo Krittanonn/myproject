@@ -97,6 +97,8 @@
     .btn-grey:hover {
         background-color: #6B7280; /* เทียบเท่ากับ hover:bg-gray-600 */
     }
+
+
 </style>
 
 <div class="container">
@@ -116,6 +118,7 @@
         </form>
         
         <a href="{{ route('members.create') }}" class="btn-green">เพิ่มสมาชิก</a>
+        <a href="{{ route('members.report') }}" class="btn-green">ดูรายงาน</a>
     </div>
     <div style="margin-bottom:12px;">
         @php
@@ -175,10 +178,10 @@
 
     
 
-    <div style="margin-top: 1rem;">
+    <div >
         {{ $members->withQueryString()->links() }}
     </div>
 
-    <a href="{{ route('members.report') }}" class="btn-green">ดูรายงาน</a>
+    
 </div>
 @endsection
